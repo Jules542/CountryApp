@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.countryapp.model.Country
 
-class CountryAdapter(private val countries: List<Country>, private val onClick: (Country) -> Unit) :
+class CountryAdapter(private var countries: List<Country>, private val onClick: (Country) -> Unit) :
     RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
@@ -30,4 +30,10 @@ class CountryAdapter(private val countries: List<Country>, private val onClick: 
             itemView.setOnClickListener { onClick(country) }
         }
     }
+
+    fun updateData(newCountries: List<Country>) {
+        countries = newCountries
+        notifyDataSetChanged()
+    }
+
 }
